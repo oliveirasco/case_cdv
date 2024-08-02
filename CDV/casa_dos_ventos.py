@@ -43,11 +43,9 @@ df = pd.DataFrame([record['attributes'] for record in all_records])
 df['DATA_ATUALIZACAO'] = pd.to_datetime(df['DATA_ATUALIZACAO'], unit='ms')
 df['DATA_ATUALIZACAO'] = df['DATA_ATUALIZACAO'].dt.strftime('%Y-%m-%d')
 
-print(df.head())
+##print(df.head())
 
 # Converte X e Y para GeoDataFrame
-##if 'X' in df.columns and 'Y' in df.columns:
-    
 utm_proj = Proj(proj='utm', zone=23, south=True, ellps='WGS84')
 wgs84_proj = Proj(proj='latlong', datum='WGS84')
 
@@ -66,7 +64,4 @@ gdf['Longitude'] = gdf['geometry'].apply(lambda p: p.x)
 gdf.to_csv('C:/Users/Usuario/Documents/outputs/resultado_geodata.csv', index=False)
 print('Dados exportados para resultado_geodata.csv')
             
-#else:
-#    print('A chave "features" não foi encontrada no JSON.')
-   
-#    print(data)  # ou processar os dados conforme necessário
+
